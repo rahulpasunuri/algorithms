@@ -1,2 +1,2 @@
-g++ SelectionSort.cpp
+g++ InsertionSort.cpp
 ./a.out
