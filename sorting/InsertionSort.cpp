@@ -7,7 +7,8 @@ void sortArray(int*, int);
 
 int main()
 {
-    int a[]={4,3,2,11,234,1234,54,2321,2321};
+//    int a[]={4,3,2,11,234,1234,54,2321,2321};
+    int a[]={1,2,3,1,5,1};
     int len=sizeof(a)/sizeof(*a);
     sortArray(a,len);
     printArray(a,len);
@@ -18,18 +19,32 @@ void sortArray(int *a,int len)
 {
     for(int i=1;i<len;i++)
     {
-        for(int j=0;j<i;j++)
+        printArray(a,len);
+        if(a[i-1]<=a[i])
+        {
+            continue;
+        }
+        for(int j=(i-2);j>=0;j--)
         {
             if(a[j]>a[i])
             {
-                int temp=a[i];
-                for(int k=i-1;k>=j;k--)
-                {
-                    a[k+1]=a[k];
-                }
-                a[j]=temp;
-                break;
-            }            
+                continue;
+            }
+
+            if(a[j]==a[i])
+            {
+                //we will maintain the original order of the values which are equal..
+                //i.e., we will not swap values which are equal.
+                j++;
+            }        
+            cout<<"printing j"<<j<<"\n";
+            int temp=a[i];  
+            for(int k=i-1;k>=j;k--)
+            {
+                a[k+1]=a[k];
+            }
+            a[j]=temp; 
+            break;    
         }
     }
 }
