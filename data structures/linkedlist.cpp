@@ -67,6 +67,26 @@ void printKElement(Node *head, int& k)
 	k--;
 }
 
+void reverseLL(Node* &head)
+{
+	if(head==NULL)
+	{
+		return;
+	}
+	Node* p = head->next;
+	Node* q=NULL;
+	while(p!=NULL)
+	{									
+		
+		p = head->next;		
+		head->next = q;
+		q=head;
+		head = p;
+		p = p->next;
+	}	
+	head->next = q;
+}
+
 int main()
 {
 	int a[] = {2,3,4,5,6,7,8};
@@ -77,10 +97,12 @@ int main()
 		insertIntoLL(head, a[i]);
 	}
 	printLL(head);	
-	int k=2;
-	printKElement(head, k);
-	
+	//int k=2;
+	//printKElement(head, k);
+
+	reverseLL(head);	
+	printLL(head);	
 	deleteLL(head);
-	
+
 	return 0;
 }
