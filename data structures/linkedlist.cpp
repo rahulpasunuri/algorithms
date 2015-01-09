@@ -52,6 +52,21 @@ void deleteLL(Node* head)
 	}
 }
 
+void printKElement(Node *head, int& k)
+{
+	if(head==NULL)
+	{
+		k--;
+		return;
+	}
+	printKElement(head->next,k);
+	if(k==0)
+	{
+		cout<<head->data<<endl;				
+	}	
+	k--;
+}
+
 int main()
 {
 	int a[] = {2,3,4,5,6,7,8};
@@ -62,6 +77,10 @@ int main()
 		insertIntoLL(head, a[i]);
 	}
 	printLL(head);	
+	int k=2;
+	printKElement(head, k);
+	
 	deleteLL(head);
+	
 	return 0;
 }
